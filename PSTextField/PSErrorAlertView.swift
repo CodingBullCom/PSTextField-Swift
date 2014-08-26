@@ -12,25 +12,26 @@ class PSErrorAlertView: UIView {
     
     var popUpTriangleTipPoint: CGPoint = CGPointZero
     var popUpTriangleHorizontalRightMargin: CGFloat = 0.0
-    weak var errorMsg: NSString!
+    var errorMsg: String!
     weak var popupView: PSErrorPopupView! = nil
 
     override init(frame : CGRect) {
         super.init(frame: frame)
     }
 
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    convenience init(errorMessage: NSString)
+    convenience init(errorMessage: String)
     {
         var frame: CGRect = UIScreen.mainScreen().bounds
         self.init(frame: frame)
         errorMsg = errorMessage
-        self.backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clearColor()
         var tapGestureRecogniser: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissErrorAlertView:")
         self.addGestureRecognizer(tapGestureRecogniser)
+        
 
     }
     

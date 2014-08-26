@@ -14,10 +14,10 @@ let RECTANGLE_HEIGHT: CGFloat = 3.0
 
 class PSErrorPopupView: UIView {
 
-    weak var errorMsg: NSString!
+    var errorMsg: String!
     var popUpPointX: CGFloat!
 
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -25,7 +25,7 @@ class PSErrorPopupView: UIView {
         super.init(frame: frame)
     }
     
-    convenience init(frame aRect: CGRect, errorMessage aMessage: NSString, triangleCenterX x: CGFloat)
+    convenience init(frame aRect: CGRect, errorMessage aMessage: String, triangleCenterX x: CGFloat)
     {
         var tempFrame: CGRect = aRect
         tempFrame.size.height += 13.0

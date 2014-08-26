@@ -1,5 +1,5 @@
 //
-//  NSString+Validation.swift
+//  String+Validation.swift
 //  PSTextFieldDemo
 //
 //  Created by Pawan Kumar Singh on 16/08/14.
@@ -55,57 +55,57 @@ extension String{
         
     }
     
-    var PSDataValidationErrorDomain: NSString { return "com.pserror.inputvalidation"}
+    var PSDataValidationErrorDomain: String { return "com.pserror.inputvalidation"}
+
+    var PSEmailLengthZeroErrorDesc: String { return "Email field empty."}
+    var PSEmailInvalidFormatErrorDesc: String { return "Email address is not valid."}
+    var PSUserNameLengthZeroErrorDesc: String { return"Username field empty."}
+    var PSUserNameInvalidFormatErrorDesc: String { return"User name can not contain special characters."}
+    var PSUserNameLengthMinimumErrorDesc: String { return "User name can not be less than 7 characters."}
+    var PSPersonNameValidationErrorDesc: String { return "Invalid Name."}
     
-    var PSEmailLengthZeroErrorDesc: NSString { return "Email field empty."}
-    var PSEmailInvalidFormatErrorDesc: NSString { return "Email address is not valid."}
-    var PSUserNameLengthZeroErrorDesc: NSString { return"Username field empty."}
-    var PSUserNameInvalidFormatErrorDesc: NSString { return"User name can not contain special characters."}
-    var PSUserNameLengthMinimumErrorDesc: NSString { return "User name can not be less than 7 characters."}
-    var PSPersonNameValidationErrorDesc: NSString { return "Invalid Name."}
+    var PSFirstNameEmptyErrorDesc: String { return "First name can't be empty."}
+    var PSFirstNameMaxAllowedCharsErrorDesc: String { return "First name can't be more than 44 characters."}
+    var PSFirstNameInvalidFormatErrorDesc: String { return "First name can't contain special characters."}
     
-    var PSFirstNameEmptyErrorDesc: NSString { return "First name can't be empty."}
-    var PSFirstNameMaxAllowedCharsErrorDesc: NSString { return "First name can't be more than 44 characters."}
-    var PSFirstNameInvalidFormatErrorDesc: NSString { return "First name can't contain special characters."}
+    var PSLastNameEmptyErrorDesc: String { return "Last name can't be empty"}
+    var PSLastNameMaxAllowedCharsErrorDesc: String { return "Last name can't be more than 44 characters."}
+    var PSLastNameInvalidFormatErrorDesc: String { return "Last name can't contain special characters"}
     
-    var PSLastNameEmptyErrorDesc: NSString { return "Last name can't be empty"}
-    var PSLastNameMaxAllowedCharsErrorDesc: NSString { return "Last name can't be more than 44 characters."}
-    var PSLastNameInvalidFormatErrorDesc: NSString { return "Last name can't contain special characters"}
+    var PSPasswordInvalidFormatErrorDesc: String { return "Invalid Password."}
+    var PSPasswordLengthZeroErrorDesc: String { return "Password field empty."}
+    var PSPasswordLengthMinimumErrorDesc: String { return "Password should be minimum 7 characters."}
+    var PSPersonNameLengthZeroErrorDesc: String { return "Username field can't be empty."}
+    var PSCountryISDCodeLengthZeroErrorDesc: String { return "Enter country code."}
+    var PSInvalidCountryISDCodeErrorDesc: String { return "Enter valid country code."}
+    var PSPhoneNumberLengthZeroErrorDesc: String { return "Enter phone number."}
+    var PSInvalidPhoneNumberErrorDesc: String { return "Enter valid phone number."}
+    var PSEmptyStringErrorDesc: String { return "This field can't be empty."}
     
-    var PSPasswordInvalidFormatErrorDesc: NSString { return "Invalid Password."}
-    var PSPasswordLengthZeroErrorDesc: NSString { return "Password field empty."}
-    var PSPasswordLengthMinimumErrorDesc: NSString { return "Password should be minimum 7 characters."}
-    var PSPersonNameLengthZeroErrorDesc: NSString { return "Username field can't be empty."}
-    var PSCountryISDCodeLengthZeroErrorDesc: NSString { return "Enter country code."}
-    var PSInvalidCountryISDCodeErrorDesc: NSString { return "Enter valid country code."}
-    var PSPhoneNumberLengthZeroErrorDesc: NSString { return "Enter phone number."}
-    var PSInvalidPhoneNumberErrorDesc: NSString { return "Enter valid phone number."}
-    var PSEmptyStringErrorDesc: NSString { return "This field can't be empty."}
+    var PSDateEmptyErrorDesc: String { return "Date can't be empty."}
+    var PSTimeEmptyErrorDesc: String { return"Time can't be empty."}
     
-    var PSDateEmptyErrorDesc: NSString { return "Date can't be empty."}
-    var PSTimeEmptyErrorDesc: NSString { return"Time can't be empty."}
+    var PSPlaceNameEmptyErrorDesc: String { return"Place can't be empty."}
+    var PSPlaceNameInvalidFormatErrorDesc: String { return"Place name is invalid."}
     
-    var PSPlaceNameEmptyErrorDesc: NSString { return"Place can't be empty."}
-    var PSPlaceNameInvalidFormatErrorDesc: NSString { return"Place name is invalid."}
+    var PSCityNameEmptyErrorDesc: String { return"City can't be empty."}
+    var PSCityNameInvalidFormatErrorDesc: String { return"City name is invalid."}
     
-    var PSCityNameEmptyErrorDesc: NSString { return"City can't be empty."}
-    var PSCityNameInvalidFormatErrorDesc: NSString { return"City name is invalid."}
+    var PSStateNameEmptyErrorDesc: String { return"State can't be empty."}
+    var PSStateNameInvalidFormatErrorDesc: String { return"State name is invalid."}
     
-    var PSStateNameEmptyErrorDesc: NSString { return"State can't be empty."}
-    var PSStateNameInvalidFormatErrorDesc: NSString { return"State name is invalid."}
-    
-    var PSCountryNameEmptyErrorDesc: NSString { return"Country can't be empty."}
-    var PSCountryNameInvalidFormatErrorDesc: NSString { return "Country name is invalid."}
+    var PSCountryNameEmptyErrorDesc: String { return"Country can't be empty."}
+    var PSCountryNameInvalidFormatErrorDesc: String { return "Country name is invalid."}
 
     func validateUserName(error: NSErrorPointer) -> Bool {
-        
+
         var success: Bool = false
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
-        var errorDescStr: NSString! = PSEmptyStringErrorDesc
-        var userNameRegex: NSString = "[A-Z0-9a-z._-]{7,32}"
+        var errorDescStr: String! = PSEmptyStringErrorDesc
+        var userNameRegex: String = "[A-Z0-9a-z._-]{7,32}"
         var userName: NSPredicate = NSPredicate(format: "SELF MATCHES %@",userNameRegex)
         
-        if(self == nil || isEmpty){
+        if(isEmpty){
             
             errorCode = .PSUserNameLengthZeroErrorCode
             errorDescStr = PSUserNameLengthZeroErrorDesc
@@ -115,7 +115,7 @@ extension String{
             errorCode = .PSUserNameLengthMinimumErrorCode
             errorDescStr = PSUserNameLengthMinimumErrorDesc
             
-        }else if (userName.evaluateWithObject(self) == nil) {
+        }else if (userName.evaluateWithObject(self) == false) {
             
             errorCode = .PSUserNameInvalidFormatErrorCode
             errorDescStr = PSUserNameInvalidFormatErrorDesc
@@ -135,11 +135,11 @@ extension String{
         
         var success: Bool = false
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
-        var errorDescStr: NSString! = PSEmptyStringErrorDesc
+        var errorDescStr: String! = PSEmptyStringErrorDesc
         var firstNameRegex: String = "[A-Za-z. ]{1,44}"
         var firstName: NSPredicate = NSPredicate(format: "SELF MATCHES %@",firstNameRegex)
         
-        if(self == nil || isEmpty){
+        if(isEmpty){
             
             errorCode = .PSFirstNameLengthZeroErrorCode
             errorDescStr = PSFirstNameEmptyErrorDesc
@@ -149,7 +149,7 @@ extension String{
             errorCode = .PSFirstNameMaxAllowedCharsErrorCode
             errorDescStr = PSFirstNameMaxAllowedCharsErrorDesc
             
-        }else if (firstName.evaluateWithObject(self) == nil) {
+        }else if (firstName.evaluateWithObject(self) == false) {
             
             errorCode = .PSFirstNameInvalidFormatErrorCode
             errorDescStr = PSFirstNameInvalidFormatErrorDesc
@@ -169,11 +169,11 @@ extension String{
         
         var success: Bool = false
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
-        var errorDescStr: NSString! = PSEmptyStringErrorDesc
-        var lastNameRegex: NSString = "[A-Za-z. ]{1,44}"
+        var errorDescStr: String! = PSEmptyStringErrorDesc
+        var lastNameRegex: String = "[A-Za-z. ]{1,44}"
         var lastName: NSPredicate = NSPredicate(format: "SELF MATCHES %@",lastNameRegex)
         
-        if(self == nil || isEmpty){
+        if(isEmpty){
             
             errorCode = .PSLastNameLengthZeroErrorCode
             errorDescStr = PSLastNameEmptyErrorDesc
@@ -183,7 +183,7 @@ extension String{
             errorCode = .PSLastNameMaxAllowedCharsErrorCode
             errorDescStr = PSLastNameMaxAllowedCharsErrorDesc
             
-        }else if (lastName.evaluateWithObject(self) == nil) {
+        }else if (lastName.evaluateWithObject(self) == false) {
             
             errorCode = .PSLastNameInvalidFormatErrorCode
             errorDescStr = PSLastNameInvalidFormatErrorDesc
@@ -204,8 +204,8 @@ extension String{
         
         var success: Bool = false
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
-        var errorDescStr: NSString! = PSEmptyStringErrorDesc
-        var emailRegex: NSString = "[A-Z0-9a-z._-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        var errorDescStr: String! = PSEmptyStringErrorDesc
+        var emailRegex: String = "[A-Z0-9a-z._-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         var emailPredicate: NSPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         
         if(isEmpty == 0){
@@ -213,7 +213,7 @@ extension String{
             errorCode = .PSEmailLengthZeroErrorCode
             errorDescStr = PSEmailLengthZeroErrorDesc
             
-        }else if(emailPredicate.evaluateWithObject(self) == nil) {
+        }else if(emailPredicate.evaluateWithObject(self) == false) {
             
             errorCode = .PSEmailInvalidFormatErrorCode
             errorDescStr = PSEmailInvalidFormatErrorDesc
@@ -233,9 +233,9 @@ extension String{
 
         var success: Bool = false
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
-        var errorDescStr: NSString! = PSEmptyStringErrorDesc
+        var errorDescStr: String! = PSEmptyStringErrorDesc
 
-        var passwordRegex: NSString = "[A-Z0-9a-z]{7,32}"
+        var passwordRegex: String = "[A-Z0-9a-z]{7,32}"
         var password: NSPredicate = NSPredicate(format:"SELF MATCHES %@", passwordRegex)
     
         if(isEmpty){
@@ -248,7 +248,7 @@ extension String{
             errorCode = .PSPasswordLengthMinimumErrorCode
             errorDescStr = PSPasswordLengthMinimumErrorDesc
 
-        }else if (password.evaluateWithObject(self) == nil) {
+        }else if (password.evaluateWithObject(self) == false) {
             
             errorCode = .PSPasswordInvalidFormatErrorCode
             errorDescStr = PSPasswordInvalidFormatErrorDesc
@@ -268,15 +268,15 @@ extension String{
         
         var success: Bool = false
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
-        var errorDesc: NSString = PSEmptyStringErrorDesc
-        var phoneRegex: NSString = "[+][0-9]{1,4}"
+        var errorDesc: String = PSEmptyStringErrorDesc
+        var phoneRegex: String = "[+][0-9]{1,4}"
         var countryCodeTest: NSPredicate = NSPredicate(format:"SELF MATCHES %@", phoneRegex)
         
         if(isEmpty){
             errorCode = .PSCountryISDCodeLengthZeroErrorCode
             errorDesc = PSCountryISDCodeLengthZeroErrorDesc
             
-        }else if(countryCodeTest.evaluateWithObject(self) == nil)
+        }else if(countryCodeTest.evaluateWithObject(self) == false)
         {
             errorCode = .PSInvalidCountryISDCodeErrorCode
             errorDesc = PSInvalidCountryISDCodeErrorDesc
@@ -296,8 +296,8 @@ extension String{
         
         var success: Bool = false
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
-        var errorDesc: NSString = PSEmptyStringErrorDesc
-        var phoneRegex: NSString = "[0-9]{7,12}"
+        var errorDesc: String = PSEmptyStringErrorDesc
+        var phoneRegex: String = "[0-9]{7,12}"
         var countryCodeTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
     
         if(isEmpty){
@@ -305,7 +305,7 @@ extension String{
             errorCode = .PSCountryISDCodeLengthZeroErrorCode
             errorDesc = PSPhoneNumberLengthZeroErrorDesc
             
-        }else if(countryCodeTest.evaluateWithObject(self) == nil){
+        }else if(countryCodeTest.evaluateWithObject(self) == false){
             errorCode = .PSInvalidCountryISDCodeErrorCode
             errorDesc = PSInvalidPhoneNumberErrorDesc
         }else{
@@ -364,8 +364,8 @@ extension String{
 
         var success = false
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
-        var errorDescStr: NSString = PSEmptyStringErrorDesc
-        var placeNameRegex: NSString = "[A-Za-z ]{1,44}"
+        var errorDescStr: String = PSEmptyStringErrorDesc
+        var placeNameRegex: String = "[A-Za-z ]{1,44}"
         var placeName: NSPredicate = NSPredicate(format:"SELF MATCHES %@", placeNameRegex)
     
         if(isEmpty){
@@ -393,8 +393,8 @@ extension String{
     func validateCity(error: NSErrorPointer) -> Bool {
         var success: Bool = false
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
-        var errorDescStr: NSString = PSEmptyStringErrorDesc
-        var cityNameRegex: NSString = "[A-Za-z ]{1,44}"
+        var errorDescStr: String = PSEmptyStringErrorDesc
+        var cityNameRegex: String = "[A-Za-z ]{1,44}"
         var cityName: NSPredicate = NSPredicate(format:"SELF MATCHES %@", cityNameRegex)
     
         if(isEmpty){
@@ -422,8 +422,8 @@ extension String{
 
         var success = false
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
-        var errorDescStr: NSString = PSEmptyStringErrorDesc
-        var stateNameRegex: NSString = "[A-Za-z ]{1,44}"
+        var errorDescStr: String = PSEmptyStringErrorDesc
+        var stateNameRegex: String = "[A-Za-z ]{1,44}"
         var stateName: NSPredicate = NSPredicate(format:"SELF MATCHES %@", stateNameRegex)
     
         if(isEmpty){
@@ -451,8 +451,8 @@ extension String{
         
         var success: Bool = false
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
-        var errorDescStr: NSString = PSEmptyStringErrorDesc
-        var countryNameRegex: NSString = "[A-Za-z ]{1,44}"
+        var errorDescStr: String = PSEmptyStringErrorDesc
+        var countryNameRegex: String = "[A-Za-z ]{1,44}"
         var countryName: NSPredicate = NSPredicate(format: "SELF MATCHES %@", countryNameRegex)
         
         if(isEmpty){

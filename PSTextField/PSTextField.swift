@@ -16,7 +16,7 @@ class PSTextField: UITextField {
         case PSDataValidationTypeFirstName          //First name like Ramesh, Suresh, Gita etc
         case PSDataValidationTypeLastName           //Last name Yadav, Naidu etc
         case PSDataValidationTypeEmail              //Email id vishu@subdomain.domain
-        case PSDataValidationTypeMobileNumber       //Mobile number - +911234567890
+        case PSDataValidationTypeMobileNumber       //Mobile number - +911034567892
         case PSDataValidationTypeDate
         case PSDataValidationTypeTime
         case PSDataValidationTypePlace
