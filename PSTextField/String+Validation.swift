@@ -103,7 +103,7 @@ extension String{
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
         var errorDescStr: String! = PSEmptyStringErrorDesc
         var userNameRegex: String = "[A-Z0-9a-z._-]{7,32}"
-        var userName: NSPredicate = NSPredicate(format: "SELF MATCHES %@",userNameRegex)
+        var userName: NSPredicate! = NSPredicate(format: "SELF MATCHES %@",userNameRegex)
         
         if(isEmpty){
             
@@ -126,7 +126,7 @@ extension String{
         }
         
         if(success == false){
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.toRaw(), userInfo: [NSLocalizedDescriptionKey:errorDescStr])
+            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDescStr])
         }
         return success
     }
@@ -137,7 +137,7 @@ extension String{
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
         var errorDescStr: String! = PSEmptyStringErrorDesc
         var firstNameRegex: String = "[A-Za-z. ]{1,44}"
-        var firstName: NSPredicate = NSPredicate(format: "SELF MATCHES %@",firstNameRegex)
+        var firstName: NSPredicate! = NSPredicate(format: "SELF MATCHES %@",firstNameRegex)
         
         if(isEmpty){
             
@@ -160,7 +160,7 @@ extension String{
         }
         
         if(success == false){
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.toRaw(), userInfo: [NSLocalizedDescriptionKey:errorDescStr])
+            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDescStr])
         }
         return success
     }
@@ -171,7 +171,7 @@ extension String{
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
         var errorDescStr: String! = PSEmptyStringErrorDesc
         var lastNameRegex: String = "[A-Za-z. ]{1,44}"
-        var lastName: NSPredicate = NSPredicate(format: "SELF MATCHES %@",lastNameRegex)
+        var lastName: NSPredicate! = NSPredicate(format: "SELF MATCHES %@",lastNameRegex)
         
         if(isEmpty){
             
@@ -194,7 +194,7 @@ extension String{
         }
         
         if(success == false){
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.toRaw(), userInfo: [NSLocalizedDescriptionKey:errorDescStr])
+            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDescStr])
         }
         return success
     }
@@ -206,9 +206,9 @@ extension String{
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
         var errorDescStr: String! = PSEmptyStringErrorDesc
         var emailRegex: String = "[A-Z0-9a-z._-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        var emailPredicate: NSPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        var emailPredicate: NSPredicate! = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         
-        if(isEmpty == 0){
+        if(isEmpty){
             
             errorCode = .PSEmailLengthZeroErrorCode
             errorDescStr = PSEmailLengthZeroErrorDesc
@@ -224,7 +224,7 @@ extension String{
         }
         
         if(success == false){
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.toRaw(), userInfo: [NSLocalizedDescriptionKey: errorDescStr])
+            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey: errorDescStr])
         }
         return success;
     }
@@ -236,7 +236,7 @@ extension String{
         var errorDescStr: String! = PSEmptyStringErrorDesc
 
         var passwordRegex: String = "[A-Z0-9a-z]{7,32}"
-        var password: NSPredicate = NSPredicate(format:"SELF MATCHES %@", passwordRegex)
+        var password: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", passwordRegex)
     
         if(isEmpty){
             
@@ -259,7 +259,7 @@ extension String{
         }
         
         if(success == false){
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.toRaw(), userInfo: [NSLocalizedDescriptionKey:errorDescStr])
+            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDescStr])
         }
         return success;
     }
@@ -270,7 +270,7 @@ extension String{
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
         var errorDesc: String = PSEmptyStringErrorDesc
         var phoneRegex: String = "[+][0-9]{1,4}"
-        var countryCodeTest: NSPredicate = NSPredicate(format:"SELF MATCHES %@", phoneRegex)
+        var countryCodeTest: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", phoneRegex)
         
         if(isEmpty){
             errorCode = .PSCountryISDCodeLengthZeroErrorCode
@@ -287,7 +287,7 @@ extension String{
         }
         
         if (success == false){
-            error.memory = NSError(domain:PSDataValidationErrorDomain, code:errorCode.toRaw(), userInfo:[NSLocalizedDescriptionKey:errorDesc])
+            error.memory = NSError(domain:PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey:errorDesc])
         }
         return success;
     }
@@ -298,7 +298,7 @@ extension String{
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
         var errorDesc: String = PSEmptyStringErrorDesc
         var phoneRegex: String = "[0-9]{7,12}"
-        var countryCodeTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        var countryCodeTest: NSPredicate! = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
     
         if(isEmpty){
             
@@ -315,7 +315,7 @@ extension String{
         
         if(success == false)
         {
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.toRaw(), userInfo: [NSLocalizedDescriptionKey:errorDesc])
+            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDesc])
         }
         return success;
     }
@@ -324,7 +324,7 @@ extension String{
         
         var success: Bool = false
         if(isEmpty){
-            var errorCode: Int = PSDataValidationErrorCode.PSEmptyDataValidationErrorCode.toRaw()
+            var errorCode: Int = PSDataValidationErrorCode.PSEmptyDataValidationErrorCode.rawValue
             error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode, userInfo:[NSLocalizedDescriptionKey:PSEmptyStringErrorDesc])
         }else{
             error.memory = nil
@@ -338,7 +338,7 @@ extension String{
         
         var success = false
         if(isEmpty){
-            var errorCode: Int = PSDataValidationErrorCode.PSDateLengthZeroErrorCode.toRaw()
+            var errorCode: Int = PSDataValidationErrorCode.PSDateLengthZeroErrorCode.rawValue
             error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode, userInfo:[NSLocalizedDescriptionKey:PSDateEmptyErrorDesc])
         }else{
             success = true
@@ -351,7 +351,7 @@ extension String{
         var success: Bool = false
         if(isEmpty){
 
-            var errorCode: Int = PSDataValidationErrorCode.PSTimeLengthZeroErrorCode.toRaw()
+            var errorCode: Int = PSDataValidationErrorCode.PSTimeLengthZeroErrorCode.rawValue
             error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode, userInfo:[NSLocalizedDescriptionKey:PSTimeEmptyErrorDesc])
             
         }else{
@@ -366,7 +366,7 @@ extension String{
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
         var errorDescStr: String = PSEmptyStringErrorDesc
         var placeNameRegex: String = "[A-Za-z ]{1,44}"
-        var placeName: NSPredicate = NSPredicate(format:"SELF MATCHES %@", placeNameRegex)
+        var placeName: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", placeNameRegex)
     
         if(isEmpty){
             
@@ -384,7 +384,7 @@ extension String{
         }
         
         if(success == false){
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code:errorCode.toRaw(), userInfo:[NSLocalizedDescriptionKey: errorDescStr])
+            error.memory = NSError(domain: PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey: errorDescStr])
         }
         
         return success;
@@ -395,7 +395,7 @@ extension String{
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
         var errorDescStr: String = PSEmptyStringErrorDesc
         var cityNameRegex: String = "[A-Za-z ]{1,44}"
-        var cityName: NSPredicate = NSPredicate(format:"SELF MATCHES %@", cityNameRegex)
+        var cityName: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", cityNameRegex)
     
         if(isEmpty){
             
@@ -413,7 +413,7 @@ extension String{
         }
         
         if(success == false){
-            error.memory = NSError(domain:PSDataValidationErrorDomain, code:errorCode.toRaw(), userInfo:[NSLocalizedDescriptionKey: errorDescStr])
+            error.memory = NSError(domain:PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey: errorDescStr])
         }
         return success
     }
@@ -424,7 +424,7 @@ extension String{
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
         var errorDescStr: String = PSEmptyStringErrorDesc
         var stateNameRegex: String = "[A-Za-z ]{1,44}"
-        var stateName: NSPredicate = NSPredicate(format:"SELF MATCHES %@", stateNameRegex)
+        var stateName: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", stateNameRegex)
     
         if(isEmpty){
             
@@ -442,7 +442,7 @@ extension String{
         }
         
         if(success == false){
-            error.memory = NSError(domain:PSDataValidationErrorDomain, code:errorCode.toRaw(), userInfo:[NSLocalizedDescriptionKey: errorDescStr])
+            error.memory = NSError(domain:PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey: errorDescStr])
         }
         return success
     }
@@ -453,7 +453,7 @@ extension String{
         var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
         var errorDescStr: String = PSEmptyStringErrorDesc
         var countryNameRegex: String = "[A-Za-z ]{1,44}"
-        var countryName: NSPredicate = NSPredicate(format: "SELF MATCHES %@", countryNameRegex)
+        var countryName: NSPredicate! = NSPredicate(format: "SELF MATCHES %@", countryNameRegex)
         
         if(isEmpty){
             
@@ -471,7 +471,7 @@ extension String{
         }
         
         if(success == false){
-            error.memory = NSError(domain:PSDataValidationErrorDomain, code:errorCode.toRaw(), userInfo:[NSLocalizedDescriptionKey: errorDescStr])
+            error.memory = NSError(domain:PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey: errorDescStr])
         }
         return success;
     }
