@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		8768A658199D274600C5311A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8768A656199D274600C5311A /* Main.storyboard */; };
 		8768A65A199D274600C5311A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8768A659199D274600C5311A /* Images.xcassets */; };
 		8768A666199D274600C5311A /* PSTextFieldDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8768A665199D274600C5311A /* PSTextFieldDemoTests.swift */; };
+		876DEB381DA5F68E00BCAABE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 876DEB371DA5F68E00BCAABE /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		8768A65F199D274600C5311A /* PSTextFieldDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PSTextFieldDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8768A664199D274600C5311A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8768A665199D274600C5311A /* PSTextFieldDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTextFieldDemoTests.swift; sourceTree = "<group>"; };
+		876DEB371DA5F68E00BCAABE /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				8768A64F199D274600C5311A /* AppDelegate.swift */,
 				8768A654199D274600C5311A /* ViewController.swift */,
 				8768A656199D274600C5311A /* Main.storyboard */,
+				876DEB371DA5F68E00BCAABE /* Launch Screen.storyboard */,
 				8768A659199D274600C5311A /* Images.xcassets */,
 				8768A64D199D274600C5311A /* Supporting Files */,
 			);
@@ -179,15 +182,17 @@
 				TargetAttributes = {
 					8768A649199D274600C5311A = {
 						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 0800;
 					};
 					8768A65E199D274600C5311A = {
 						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 0800;
 						TestTargetID = 8768A649199D274600C5311A;
 					};
 				};
 			};
 			buildConfigurationList = 8768A645199D274500C5311A /* Build configuration list for PBXProject "PSTextFieldDemo" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -210,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				876DEB381DA5F68E00BCAABE /* Launch Screen.storyboard in Resources */,
 				8768A658199D274600C5311A /* Main.storyboard in Resources */,
 				8768A65A199D274600C5311A /* Images.xcassets in Resources */,
 			);
@@ -355,6 +361,7 @@
 				INFOPLIST_FILE = PSTextFieldDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -366,6 +373,7 @@
 				INFOPLIST_FILE = PSTextFieldDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -384,6 +392,7 @@
 				INFOPLIST_FILE = PSTextFieldDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PSTextFieldDemo.app/PSTextFieldDemo";
 			};
 			name = Debug;
@@ -399,6 +408,7 @@
 				INFOPLIST_FILE = PSTextFieldDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PSTextFieldDemo.app/PSTextFieldDemo";
 			};
 			name = Release;

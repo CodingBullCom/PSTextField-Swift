@@ -18,7 +18,7 @@ class PSErrorPopupView: UIView {
     var popUpPointX: CGFloat!
 
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     override init(frame: CGRect) {
@@ -32,37 +32,37 @@ class PSErrorPopupView: UIView {
         self.init(frame: tempFrame)
         
         // Initialization code
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         self.errorMsg = aMessage
         self.popUpPointX = x
         
     }
   
-    override func drawRect(rect :CGRect){
+    override func draw(_ rect :CGRect){
         
         // Drawing code
-        var context: CGContextRef = UIGraphicsGetCurrentContext();
-        CGContextBeginPath(context);
+        let context: CGContext = UIGraphicsGetCurrentContext()!;
+        context.beginPath();
         
         //top triangle
-        CGContextMoveToPoint(context, popUpPointX, 0.0);
-        CGContextAddLineToPoint(context, popUpPointX-TRIANGLE_BASE_WIDTH/2, TRIANGLE_HEIGHT);
-        CGContextAddLineToPoint(context, popUpPointX+TRIANGLE_BASE_WIDTH/2, TRIANGLE_HEIGHT);
-        CGContextAddLineToPoint(context, popUpPointX, 0.0);
+        context.move(to: CGPoint(x: popUpPointX, y: 0.0))
+        context.addLine(to: CGPoint(x: popUpPointX-TRIANGLE_BASE_WIDTH/2, y: TRIANGLE_HEIGHT))
+        context.addLine(to: CGPoint(x: popUpPointX+TRIANGLE_BASE_WIDTH/2, y: TRIANGLE_HEIGHT))
+        context.addLine(to: CGPoint(x: popUpPointX, y: 0.0))
         
-        CGContextAddRect(context, CGRectMake(0.0, TRIANGLE_HEIGHT, self.frame.size.width, RECTANGLE_HEIGHT));
+        context.addRect(CGRect(x: 0.0, y: TRIANGLE_HEIGHT, width: self.frame.size.width, height: RECTANGLE_HEIGHT))
         
-        CGContextClosePath(context);
-        CGContextSetRGBFillColor(context, 1.0, 0.0, 0.0, 1.0);          //Red color
-        CGContextDrawPath(context, kCGPathFill);
+        context.closePath()
+        context.setFillColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)          //Red color
+        context.drawPath(using: .fill)
         
-        var frame: CGRect = CGRectMake(0.0, TRIANGLE_HEIGHT+RECTANGLE_HEIGHT, self.frame.size.width, self.frame.size.height);
+        let frame: CGRect = CGRect(x: 0.0, y: TRIANGLE_HEIGHT+RECTANGLE_HEIGHT, width: self.frame.size.width, height: self.frame.size.height);
         
-        var errorLabel: UILabel = UILabel(frame: frame)
+        let errorLabel: UILabel = UILabel(frame: frame)
         errorLabel.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.65)
-        errorLabel.textAlignment = .Center
-        errorLabel.textColor = UIColor.whiteColor()
-        errorLabel.font = UIFont.systemFontOfSize(13.0)
+        errorLabel.textAlignment = .center
+        errorLabel.textColor = UIColor.white
+        errorLabel.font = UIFont.systemFont(ofSize: 13.0)
         errorLabel.text = errorMsg
         addSubview(errorLabel)
         

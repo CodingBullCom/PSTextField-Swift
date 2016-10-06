@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -9,61 +12,83 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PSTextFieldDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="2u1-TU-dWB"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wzx-8Q-Wss"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cDW-Z2-EA6" customClass="PSTextField" customModule="PSTextFieldDemo" customModuleProvider="target">
-                                <rect key="frame" x="192" y="54" width="217" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="psh-eo-NBq"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SbQ-0m-8Y6" customClass="PSTextField" customModule="PSTextFieldDemo" customModuleProvider="target">
-                                <rect key="frame" x="192" y="93" width="217" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ViN-CO-edp"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="75p-2Y-JQK" customClass="PSTextField" customModule="PSTextFieldDemo" customModuleProvider="target">
-                                <rect key="frame" x="192" y="131" width="217" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="seV-6X-pdm"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hn0-BZ-VUt" customClass="PSTextField" customModule="PSTextFieldDemo" customModuleProvider="target">
-                                <rect key="frame" x="192" y="209" width="217" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="vmI-40-vB7"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="last name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mlT-na-rwe" customClass="PSTextField" customModule="PSTextFieldDemo" customModuleProvider="target">
-                                <rect key="frame" x="192" y="171" width="217" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="U3u-Ka-6ly"/>
-                                </connections>
-                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3J-Y3-c4h">
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cDW-Z2-EA6" customClass="PSTextField" customModule="PSTextFieldDemo" customModuleProvider="target">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="340" id="DeR-2i-96a"/>
+                                            <constraint firstAttribute="height" constant="30" id="h3A-1v-R2E"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="ddf-nP-L23"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SbQ-0m-8Y6" customClass="PSTextField" customModule="PSTextFieldDemo" customModuleProvider="target">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="340" id="9RI-1p-E7y"/>
+                                            <constraint firstAttribute="height" constant="30" id="nWP-gD-SGH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="Hqd-8n-kBd"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="75p-2Y-JQK" customClass="PSTextField" customModule="PSTextFieldDemo" customModuleProvider="target">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7J4-nq-xXa"/>
+                                            <constraint firstAttribute="width" constant="340" id="Z9p-Ph-U59"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hn0-BZ-VUt" customClass="PSTextField" customModule="PSTextFieldDemo" customModuleProvider="target">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="3jK-cI-CUR"/>
+                                            <constraint firstAttribute="width" constant="340" id="L9t-T7-5zj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="last name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mlT-na-rwe" customClass="PSTextField" customModule="PSTextFieldDemo" customModuleProvider="target">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Xwb-U9-YfW"/>
+                                            <constraint firstAttribute="width" constant="340" id="bBA-su-Whf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="SbQ-0m-8Y6" firstAttribute="leading" secondItem="75p-2Y-JQK" secondAttribute="leading" id="4aw-I2-tP4"/>
+                                    <constraint firstAttribute="bottom" secondItem="mlT-na-rwe" secondAttribute="bottom" constant="86" id="Hx8-bG-pJy"/>
+                                    <constraint firstItem="SbQ-0m-8Y6" firstAttribute="leading" secondItem="Hn0-BZ-VUt" secondAttribute="leading" id="KcM-MK-hO6"/>
+                                    <constraint firstItem="Hn0-BZ-VUt" firstAttribute="top" secondItem="SbQ-0m-8Y6" secondAttribute="bottom" constant="17" id="Kwd-Ci-ufP"/>
+                                    <constraint firstItem="SbQ-0m-8Y6" firstAttribute="centerX" secondItem="Q3J-Y3-c4h" secondAttribute="centerX" id="OUH-Bx-Iiy"/>
+                                    <constraint firstItem="SbQ-0m-8Y6" firstAttribute="top" secondItem="Q3J-Y3-c4h" secondAttribute="top" constant="108" id="hNv-H7-svW"/>
+                                    <constraint firstItem="SbQ-0m-8Y6" firstAttribute="leading" secondItem="mlT-na-rwe" secondAttribute="leading" id="jcN-76-ttm"/>
+                                    <constraint firstItem="SbQ-0m-8Y6" firstAttribute="top" secondItem="cDW-Z2-EA6" secondAttribute="bottom" constant="8" symbolic="YES" id="mId-QB-Yab"/>
+                                    <constraint firstItem="SbQ-0m-8Y6" firstAttribute="leading" secondItem="cDW-Z2-EA6" secondAttribute="leading" id="upt-TC-wHD"/>
+                                    <constraint firstItem="mlT-na-rwe" firstAttribute="top" secondItem="75p-2Y-JQK" secondAttribute="bottom" constant="8" symbolic="YES" id="z3s-0q-w3P"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="cDW-Z2-EA6" secondAttribute="centerX" id="829-US-588"/>
-                            <constraint firstAttribute="centerX" secondItem="mlT-na-rwe" secondAttribute="centerX" id="8yJ-9h-ddK"/>
-                            <constraint firstAttribute="centerX" secondItem="SbQ-0m-8Y6" secondAttribute="centerX" id="GTY-9N-RcJ"/>
-                            <constraint firstAttribute="centerX" secondItem="75p-2Y-JQK" secondAttribute="centerX" id="SeW-kt-z8K"/>
-                            <constraint firstAttribute="centerX" secondItem="Hn0-BZ-VUt" secondAttribute="centerX" id="sU0-fe-Poy"/>
+                            <constraint firstItem="Q3J-Y3-c4h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A2A-od-kDS"/>
+                            <constraint firstItem="Wzx-8Q-Wss" firstAttribute="top" secondItem="Q3J-Y3-c4h" secondAttribute="bottom" constant="189" id="X5M-bR-F4L"/>
+                            <constraint firstItem="Q3J-Y3-c4h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-8" id="nOY-qu-7Qs"/>
+                            <constraint firstItem="Q3J-Y3-c4h" firstAttribute="top" secondItem="2u1-TU-dWB" secondAttribute="bottom" constant="111" id="stY-3S-gLY"/>
                         </constraints>
                     </view>
                     <connections>
@@ -76,6 +101,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="87.5" y="154.5"/>
         </scene>
     </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>

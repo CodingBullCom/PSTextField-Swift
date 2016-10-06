@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, PSTextFieldDelegate {
 
     // MARK: Properties
     @IBOutlet weak var usernameTxtFld: PSTextField!
@@ -23,11 +23,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        usernameTxtFld.dataValidationType = .PSDataValidationTypeUserName
-        passwordTxtFld.dataValidationType = .PSDataValidationTypePassword
-        firstNameTxtFld.dataValidationType = .PSDataValidationTypeFirstName
-        lastNameTxtFld.dataValidationType = .PSDataValidationTypeLastName
-        emailTxtFld.dataValidationType = .PSDataValidationTypeEmail
+        usernameTxtFld.dataValidationType = .userName
+        passwordTxtFld.dataValidationType = .password
+        firstNameTxtFld.dataValidationType = .firstName
+        lastNameTxtFld.dataValidationType = .lastName
+        emailTxtFld.dataValidationType = .email
         
     }
 
@@ -36,15 +36,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: UITextFieldDelegate
+    // MARK: PSTextFieldDelegate
     
-    func textFieldShouldReturn(textField: PSTextField) -> Bool {
+    func textFieldShouldReturn(_ textField: PSTextField) -> Bool {
         textField.resignFirstResponder()
         
         return true
     }
 
-    func textFieldDidEndEditing(textField: PSTextField) {
+    func textFieldDidEndEditing(_ textField: PSTextField){
         textField.validateInput()
     }
 

@@ -12,46 +12,46 @@ extension String{
     
     enum PSDataValidationErrorCode: Int {
         
-        case PSEmailLengthZeroErrorCode = 1000              //Blank Email field
-        case PSEmailInvalidFormatErrorCode                  //Email format invalid
+        case psEmailLengthZeroErrorCode = 1000              //Blank Email field
+        case psEmailInvalidFormatErrorCode                  //Email format invalid
         
-        case PSUserNameLengthZeroErrorCode                  //Blank Username field
-        case PSUserNameLengthMinimumErrorCode               //Username can't be less than minimum 7 character
-        case PSUserNameInvalidFormatErrorCode               //Username format invalid
+        case psUserNameLengthZeroErrorCode                  //Blank Username field
+        case psUserNameLengthMinimumErrorCode               //Username can't be less than minimum 7 character
+        case psUserNameInvalidFormatErrorCode               //Username format invalid
         
-        case PSFirstNameLengthZeroErrorCode                 //Blank first name
-        case PSFirstNameInvalidFormatErrorCode              //Any other character than A-Z or a-z or blankspace
-        case PSFirstNameMaxAllowedCharsErrorCode            //Maximum allowed charcters (44 is considered for demo).
+        case psFirstNameLengthZeroErrorCode                 //Blank first name
+        case psFirstNameInvalidFormatErrorCode              //Any other character than A-Z or a-z or blankspace
+        case psFirstNameMaxAllowedCharsErrorCode            //Maximum allowed charcters (44 is considered for demo).
         
-        case PSLastNameLengthZeroErrorCode                  //Blank last name
-        case PSLastNameInvalidFormatErrorCode               //Any other character than A-Z or a-z or blankspace
-        case PSLastNameMaxAllowedCharsErrorCode             //Maximum allowed charcters (44 is considered for demo).
+        case psLastNameLengthZeroErrorCode                  //Blank last name
+        case psLastNameInvalidFormatErrorCode               //Any other character than A-Z or a-z or blankspace
+        case psLastNameMaxAllowedCharsErrorCode             //Maximum allowed charcters (44 is considered for demo).
         
-        case PSPasswordLengthZeroErrorCode                  //Blank password
-        case PSPasswordLengthMinimumErrorCode               //minimum length, (7 is considered for demo).
-        case PSPasswordInvalidFormatErrorCode               //invalid characters
+        case psPasswordLengthZeroErrorCode                  //Blank password
+        case psPasswordLengthMinimumErrorCode               //minimum length, (7 is considered for demo).
+        case psPasswordInvalidFormatErrorCode               //invalid characters
         
-        case PSCountryISDCodeLengthZeroErrorCode
-        case PSInvalidCountryISDCodeErrorCode
-        case PSPhoneNumberLengthZeroErrorCode
-        case PSInvalidPhoneNumberErrorCode
+        case psCountryISDCodeLengthZeroErrorCode
+        case psInvalidCountryISDCodeErrorCode
+        case psPhoneNumberLengthZeroErrorCode
+        case psInvalidPhoneNumberErrorCode
         
-        case PSCountryNameLengthZeroErrorCode
-        case PSCountryNameInvalidFormatErrorCode
+        case psCountryNameLengthZeroErrorCode
+        case psCountryNameInvalidFormatErrorCode
         
-        case PSStateNameLengthZeroErrorCode
-        case PSStateNameInvalidFormatErrorCode
+        case psStateNameLengthZeroErrorCode
+        case psStateNameInvalidFormatErrorCode
         
-        case PSCityNameLengthZeroErrorCode
-        case PSCityNameInvalidFormatErrorCode
+        case psCityNameLengthZeroErrorCode
+        case psCityNameInvalidFormatErrorCode
         
-        case PSPlaceNameLengthZeroErrorCode
-        case PSPlaceNameInvalidFormatErrorCode
+        case psPlaceNameLengthZeroErrorCode
+        case psPlaceNameInvalidFormatErrorCode
         
-        case PSDateLengthZeroErrorCode
-        case PSTimeLengthZeroErrorCode
+        case psDateLengthZeroErrorCode
+        case psTimeLengthZeroErrorCode
         
-        case PSEmptyDataValidationErrorCode
+        case psEmptyDataValidationErrorCode
         
     }
     
@@ -97,262 +97,262 @@ extension String{
     var PSCountryNameEmptyErrorDesc: String { return"Country can't be empty."}
     var PSCountryNameInvalidFormatErrorDesc: String { return "Country name is invalid."}
 
-    func validateUserName(error: NSErrorPointer) -> Bool {
+    func validateUserName(_ error: NSErrorPointer) -> Bool {
 
         var success: Bool = false
-        var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
+        var errorCode: PSDataValidationErrorCode = .psEmptyDataValidationErrorCode
         var errorDescStr: String! = PSEmptyStringErrorDesc
-        var userNameRegex: String = "[A-Z0-9a-z._-]{7,32}"
-        var userName: NSPredicate! = NSPredicate(format: "SELF MATCHES %@",userNameRegex)
+        let userNameRegex: String = "[A-Z0-9a-z._-]{7,32}"
+        let userName: NSPredicate! = NSPredicate(format: "SELF MATCHES %@",userNameRegex)
         
         if(isEmpty){
             
-            errorCode = .PSUserNameLengthZeroErrorCode
+            errorCode = .psUserNameLengthZeroErrorCode
             errorDescStr = PSUserNameLengthZeroErrorDesc
             
-        }else if(countElements(self) < 7){
+        }else if(self.characters.count < 7){
             
-            errorCode = .PSUserNameLengthMinimumErrorCode
+            errorCode = .psUserNameLengthMinimumErrorCode
             errorDescStr = PSUserNameLengthMinimumErrorDesc
             
-        }else if (userName.evaluateWithObject(self) == false) {
+        }else if (userName.evaluate(with: self) == false) {
             
-            errorCode = .PSUserNameInvalidFormatErrorCode
+            errorCode = .psUserNameInvalidFormatErrorCode
             errorDescStr = PSUserNameInvalidFormatErrorDesc
             
         }else{
-            error.memory = nil
+            error?.pointee = nil
             success = true
         }
         
         if(success == false){
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDescStr])
+            error?.pointee = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDescStr])
         }
         return success
     }
     
-    func validateFirstName(error: NSErrorPointer) -> Bool{
+    func validateFirstName(_ error: NSErrorPointer) -> Bool{
         
         var success: Bool = false
-        var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
+        var errorCode: PSDataValidationErrorCode = .psEmptyDataValidationErrorCode
         var errorDescStr: String! = PSEmptyStringErrorDesc
-        var firstNameRegex: String = "[A-Za-z. ]{1,44}"
-        var firstName: NSPredicate! = NSPredicate(format: "SELF MATCHES %@",firstNameRegex)
+        let firstNameRegex: String = "[A-Za-z. ]{1,44}"
+        let firstName: NSPredicate! = NSPredicate(format: "SELF MATCHES %@",firstNameRegex)
         
         if(isEmpty){
             
-            errorCode = .PSFirstNameLengthZeroErrorCode
+            errorCode = .psFirstNameLengthZeroErrorCode
             errorDescStr = PSFirstNameEmptyErrorDesc
             
-        }else if(countElements(self) > 44){
+        }else if(self.characters.count > 44){
             
-            errorCode = .PSFirstNameMaxAllowedCharsErrorCode
+            errorCode = .psFirstNameMaxAllowedCharsErrorCode
             errorDescStr = PSFirstNameMaxAllowedCharsErrorDesc
             
-        }else if (firstName.evaluateWithObject(self) == false) {
+        }else if (firstName.evaluate(with: self) == false) {
             
-            errorCode = .PSFirstNameInvalidFormatErrorCode
+            errorCode = .psFirstNameInvalidFormatErrorCode
             errorDescStr = PSFirstNameInvalidFormatErrorDesc
             
         }else{
-            error.memory = nil
+            error?.pointee = nil
             success = true
         }
         
         if(success == false){
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDescStr])
+            error?.pointee = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDescStr])
         }
         return success
     }
 
-    func validateLastName(error: NSErrorPointer) -> Bool{
+    func validateLastName(_ error: NSErrorPointer) -> Bool{
         
         var success: Bool = false
-        var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
+        var errorCode: PSDataValidationErrorCode = .psEmptyDataValidationErrorCode
         var errorDescStr: String! = PSEmptyStringErrorDesc
-        var lastNameRegex: String = "[A-Za-z. ]{1,44}"
-        var lastName: NSPredicate! = NSPredicate(format: "SELF MATCHES %@",lastNameRegex)
+        let lastNameRegex: String = "[A-Za-z. ]{1,44}"
+        let lastName: NSPredicate! = NSPredicate(format: "SELF MATCHES %@",lastNameRegex)
         
         if(isEmpty){
             
-            errorCode = .PSLastNameLengthZeroErrorCode
+            errorCode = .psLastNameLengthZeroErrorCode
             errorDescStr = PSLastNameEmptyErrorDesc
             
-        }else if(countElements(self) > 44){
+        }else if(self.characters.count > 44){
             
-            errorCode = .PSLastNameMaxAllowedCharsErrorCode
+            errorCode = .psLastNameMaxAllowedCharsErrorCode
             errorDescStr = PSLastNameMaxAllowedCharsErrorDesc
             
-        }else if (lastName.evaluateWithObject(self) == false) {
+        }else if (lastName.evaluate(with: self) == false) {
             
-            errorCode = .PSLastNameInvalidFormatErrorCode
+            errorCode = .psLastNameInvalidFormatErrorCode
             errorDescStr = PSLastNameInvalidFormatErrorDesc
             
         }else{
-            error.memory = nil
+            error?.pointee = nil
             success = true
         }
         
         if(success == false){
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDescStr])
+            error?.pointee = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDescStr])
         }
         return success
     }
     
     
-    func validateEmail(error: NSErrorPointer) -> Bool {
+    func validateEmail(_ error: NSErrorPointer) -> Bool {
         
         var success: Bool = false
-        var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
+        var errorCode: PSDataValidationErrorCode = .psEmptyDataValidationErrorCode
         var errorDescStr: String! = PSEmptyStringErrorDesc
-        var emailRegex: String = "[A-Z0-9a-z._-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        var emailPredicate: NSPredicate! = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        let emailRegex: String = "[A-Z0-9a-z._-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        let emailPredicate: NSPredicate! = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         
         if(isEmpty){
             
-            errorCode = .PSEmailLengthZeroErrorCode
+            errorCode = .psEmailLengthZeroErrorCode
             errorDescStr = PSEmailLengthZeroErrorDesc
             
-        }else if(emailPredicate.evaluateWithObject(self) == false) {
+        }else if(emailPredicate.evaluate(with: self) == false) {
             
-            errorCode = .PSEmailInvalidFormatErrorCode
+            errorCode = .psEmailInvalidFormatErrorCode
             errorDescStr = PSEmailInvalidFormatErrorDesc
             
         }else{
-            error.memory = nil
+            error?.pointee = nil
             success = true
         }
         
         if(success == false){
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey: errorDescStr])
+            error?.pointee = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey: errorDescStr])
         }
         return success;
     }
     
-    func validatePassword(error: NSErrorPointer) -> Bool{
+    func validatePassword(_ error: NSErrorPointer) -> Bool{
 
         var success: Bool = false
-        var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
+        var errorCode: PSDataValidationErrorCode = .psEmptyDataValidationErrorCode
         var errorDescStr: String! = PSEmptyStringErrorDesc
 
-        var passwordRegex: String = "[A-Z0-9a-z]{7,32}"
-        var password: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", passwordRegex)
+        let passwordRegex: String = "[A-Z0-9a-z]{7,32}"
+        let password: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", passwordRegex)
     
         if(isEmpty){
             
-            errorCode = .PSPasswordLengthZeroErrorCode
+            errorCode = .psPasswordLengthZeroErrorCode
             errorDescStr = PSPasswordLengthZeroErrorDesc
             
-        }else if(countElements(self) < 7){
+        }else if(self.characters.count < 7){
             
-            errorCode = .PSPasswordLengthMinimumErrorCode
+            errorCode = .psPasswordLengthMinimumErrorCode
             errorDescStr = PSPasswordLengthMinimumErrorDesc
 
-        }else if (password.evaluateWithObject(self) == false) {
+        }else if (password.evaluate(with: self) == false) {
             
-            errorCode = .PSPasswordInvalidFormatErrorCode
+            errorCode = .psPasswordInvalidFormatErrorCode
             errorDescStr = PSPasswordInvalidFormatErrorDesc
             
         }else{
-            error.memory = nil
+            error?.pointee = nil
             success = true
         }
         
         if(success == false){
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDescStr])
+            error?.pointee = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDescStr])
         }
         return success;
     }
     
-    func validateCountryCode(error: NSErrorPointer) -> Bool {
+    func validateCountryCode(_ error: NSErrorPointer) -> Bool {
         
         var success: Bool = false
-        var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
+        var errorCode: PSDataValidationErrorCode = .psEmptyDataValidationErrorCode
         var errorDesc: String = PSEmptyStringErrorDesc
-        var phoneRegex: String = "[+][0-9]{1,4}"
-        var countryCodeTest: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", phoneRegex)
+        let phoneRegex: String = "[+][0-9]{1,4}"
+        let countryCodeTest: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", phoneRegex)
         
         if(isEmpty){
-            errorCode = .PSCountryISDCodeLengthZeroErrorCode
+            errorCode = .psCountryISDCodeLengthZeroErrorCode
             errorDesc = PSCountryISDCodeLengthZeroErrorDesc
             
-        }else if(countryCodeTest.evaluateWithObject(self) == false)
+        }else if(countryCodeTest.evaluate(with: self) == false)
         {
-            errorCode = .PSInvalidCountryISDCodeErrorCode
+            errorCode = .psInvalidCountryISDCodeErrorCode
             errorDesc = PSInvalidCountryISDCodeErrorDesc
             
         }else{
-            error.memory = nil
+            error?.pointee = nil
             success = true
         }
         
         if (success == false){
-            error.memory = NSError(domain:PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey:errorDesc])
+            error?.pointee = NSError(domain:PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey:errorDesc])
         }
         return success;
     }
     
-    func validatePhoneNumber(error: NSErrorPointer!) -> Bool {
+    func validatePhoneNumber(_ error: NSErrorPointer) -> Bool {
         
         var success: Bool = false
-        var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
+        var errorCode: PSDataValidationErrorCode = .psEmptyDataValidationErrorCode
         var errorDesc: String = PSEmptyStringErrorDesc
-        var phoneRegex: String = "[0-9]{7,12}"
-        var countryCodeTest: NSPredicate! = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        let phoneRegex: String = "[0-9]{7,12}"
+        let countryCodeTest: NSPredicate! = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
     
         if(isEmpty){
             
-            errorCode = .PSCountryISDCodeLengthZeroErrorCode
+            errorCode = .psCountryISDCodeLengthZeroErrorCode
             errorDesc = PSPhoneNumberLengthZeroErrorDesc
             
-        }else if(countryCodeTest.evaluateWithObject(self) == false){
-            errorCode = .PSInvalidCountryISDCodeErrorCode
+        }else if(countryCodeTest.evaluate(with: self) == false){
+            errorCode = .psInvalidCountryISDCodeErrorCode
             errorDesc = PSInvalidPhoneNumberErrorDesc
         }else{
-            error.memory = nil
+            error?.pointee = nil
             success = true
         }
         
         if(success == false)
         {
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDesc])
+            error?.pointee = NSError(domain: PSDataValidationErrorDomain, code: errorCode.rawValue, userInfo: [NSLocalizedDescriptionKey:errorDesc])
         }
         return success;
     }
 
-    func validateEmpty(error: NSErrorPointer) -> Bool {
+    func validateEmpty(_ error: NSErrorPointer) -> Bool {
         
         var success: Bool = false
         if(isEmpty){
-            var errorCode: Int = PSDataValidationErrorCode.PSEmptyDataValidationErrorCode.rawValue
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode, userInfo:[NSLocalizedDescriptionKey:PSEmptyStringErrorDesc])
+            let errorCode: Int = PSDataValidationErrorCode.psEmptyDataValidationErrorCode.rawValue
+            error?.pointee = NSError(domain: PSDataValidationErrorDomain, code: errorCode, userInfo:[NSLocalizedDescriptionKey:PSEmptyStringErrorDesc])
         }else{
-            error.memory = nil
+            error?.pointee = nil
             success = true
         }
         return success;
     }
 
     
-    func validateDate(error: NSErrorPointer) -> Bool{
+    func validateDate(_ error: NSErrorPointer) -> Bool{
         
         var success = false
         if(isEmpty){
-            var errorCode: Int = PSDataValidationErrorCode.PSDateLengthZeroErrorCode.rawValue
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode, userInfo:[NSLocalizedDescriptionKey:PSDateEmptyErrorDesc])
+            let errorCode: Int = PSDataValidationErrorCode.psDateLengthZeroErrorCode.rawValue
+            error?.pointee = NSError(domain: PSDataValidationErrorDomain, code: errorCode, userInfo:[NSLocalizedDescriptionKey:PSDateEmptyErrorDesc])
         }else{
             success = true
         }
         return success;
     }
     
-    func validateTime(error: NSErrorPointer!) -> Bool {
+    func validateTime(_ error: NSErrorPointer) -> Bool {
         
         var success: Bool = false
         if(isEmpty){
 
-            var errorCode: Int = PSDataValidationErrorCode.PSTimeLengthZeroErrorCode.rawValue
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code: errorCode, userInfo:[NSLocalizedDescriptionKey:PSTimeEmptyErrorDesc])
+            let errorCode: Int = PSDataValidationErrorCode.psTimeLengthZeroErrorCode.rawValue
+            error?.pointee = NSError(domain: PSDataValidationErrorDomain, code: errorCode, userInfo:[NSLocalizedDescriptionKey:PSTimeEmptyErrorDesc])
             
         }else{
             success = true
@@ -360,118 +360,118 @@ extension String{
         return success
     }
     
-    func validatePlace(error: NSErrorPointer!) -> Bool {
+    func validatePlace(_ error: NSErrorPointer) -> Bool {
 
         var success = false
-        var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
+        var errorCode: PSDataValidationErrorCode = .psEmptyDataValidationErrorCode
         var errorDescStr: String = PSEmptyStringErrorDesc
-        var placeNameRegex: String = "[A-Za-z ]{1,44}"
-        var placeName: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", placeNameRegex)
+        let placeNameRegex: String = "[A-Za-z ]{1,44}"
+        let placeName: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", placeNameRegex)
     
         if(isEmpty){
             
-            errorCode = .PSPlaceNameLengthZeroErrorCode
+            errorCode = .psPlaceNameLengthZeroErrorCode
             errorDescStr = PSPlaceNameEmptyErrorDesc
             
-        }else if (placeName.evaluateWithObject(self)) {
+        }else if (placeName.evaluate(with: self)) {
             
-            errorCode = .PSPlaceNameInvalidFormatErrorCode
+            errorCode = .psPlaceNameInvalidFormatErrorCode
             errorDescStr = PSPlaceNameInvalidFormatErrorDesc
             
         }else{
-            error.memory = nil
+            error?.pointee = nil
             success = true
         }
         
         if(success == false){
-            error.memory = NSError(domain: PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey: errorDescStr])
+            error?.pointee = NSError(domain: PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey: errorDescStr])
         }
         
         return success;
     }
     
-    func validateCity(error: NSErrorPointer) -> Bool {
+    func validateCity(_ error: NSErrorPointer) -> Bool {
         var success: Bool = false
-        var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
+        var errorCode: PSDataValidationErrorCode = .psEmptyDataValidationErrorCode
         var errorDescStr: String = PSEmptyStringErrorDesc
-        var cityNameRegex: String = "[A-Za-z ]{1,44}"
-        var cityName: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", cityNameRegex)
+        let cityNameRegex: String = "[A-Za-z ]{1,44}"
+        let cityName: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", cityNameRegex)
     
         if(isEmpty){
             
-            errorCode = .PSCityNameLengthZeroErrorCode;
+            errorCode = .psCityNameLengthZeroErrorCode;
             errorDescStr = PSCityNameEmptyErrorDesc
             
-        }else if (cityName.evaluateWithObject(self)) {
+        }else if (cityName.evaluate(with: self)) {
             
-            errorCode = .PSCityNameInvalidFormatErrorCode;
+            errorCode = .psCityNameInvalidFormatErrorCode;
             errorDescStr = PSCityNameInvalidFormatErrorDesc
             
         }else{
-            error.memory = nil
+            error?.pointee = nil
             success = false
         }
         
         if(success == false){
-            error.memory = NSError(domain:PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey: errorDescStr])
+            error?.pointee = NSError(domain:PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey: errorDescStr])
         }
         return success
     }
     
-    func validateState(error: NSErrorPointer!) -> Bool {
+    func validateState(_ error: NSErrorPointer) -> Bool {
 
         var success = false
-        var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
+        var errorCode: PSDataValidationErrorCode = .psEmptyDataValidationErrorCode
         var errorDescStr: String = PSEmptyStringErrorDesc
-        var stateNameRegex: String = "[A-Za-z ]{1,44}"
-        var stateName: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", stateNameRegex)
+        let stateNameRegex: String = "[A-Za-z ]{1,44}"
+        let stateName: NSPredicate! = NSPredicate(format:"SELF MATCHES %@", stateNameRegex)
     
         if(isEmpty){
             
-            errorCode = .PSStateNameLengthZeroErrorCode
+            errorCode = .psStateNameLengthZeroErrorCode
             errorDescStr = PSStateNameEmptyErrorDesc
             
-        }else if (stateName.evaluateWithObject(self)) {
+        }else if (stateName.evaluate(with: self)) {
             
-            errorCode = .PSStateNameInvalidFormatErrorCode
+            errorCode = .psStateNameInvalidFormatErrorCode
             errorDescStr = PSStateNameInvalidFormatErrorDesc
             
         }else{
-            error.memory = nil
+            error?.pointee = nil
             success = true
         }
         
         if(success == false){
-            error.memory = NSError(domain:PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey: errorDescStr])
+            error?.pointee = NSError(domain:PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey: errorDescStr])
         }
         return success
     }
 
-    func validateCountry(error: NSErrorPointer) -> Bool {
+    func validateCountry(_ error: NSErrorPointer) -> Bool {
         
         var success: Bool = false
-        var errorCode: PSDataValidationErrorCode = .PSEmptyDataValidationErrorCode
+        var errorCode: PSDataValidationErrorCode = .psEmptyDataValidationErrorCode
         var errorDescStr: String = PSEmptyStringErrorDesc
-        var countryNameRegex: String = "[A-Za-z ]{1,44}"
-        var countryName: NSPredicate! = NSPredicate(format: "SELF MATCHES %@", countryNameRegex)
+        let countryNameRegex: String = "[A-Za-z ]{1,44}"
+        let countryName: NSPredicate! = NSPredicate(format: "SELF MATCHES %@", countryNameRegex)
         
         if(isEmpty){
             
-            errorCode = .PSCountryNameLengthZeroErrorCode
+            errorCode = .psCountryNameLengthZeroErrorCode
             errorDescStr = PSCountryNameEmptyErrorDesc
             
-        }else if (countryName.evaluateWithObject(self)) {
+        }else if (countryName.evaluate(with: self)) {
             
-            errorCode = .PSCountryNameInvalidFormatErrorCode
+            errorCode = .psCountryNameInvalidFormatErrorCode
             errorDescStr = PSCountryNameInvalidFormatErrorDesc
             
         }else{
-            error.memory = nil
+            error?.pointee = nil
             success = true
         }
         
         if(success == false){
-            error.memory = NSError(domain:PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey: errorDescStr])
+            error?.pointee = NSError(domain:PSDataValidationErrorDomain, code:errorCode.rawValue, userInfo:[NSLocalizedDescriptionKey: errorDescStr])
         }
         return success;
     }
